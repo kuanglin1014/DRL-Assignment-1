@@ -21,16 +21,16 @@ def get_state(obs, is_pas, is_des, is_pickup, pas_loc):
     pas = list(is_pas)
     des = list(is_des)
     if pas[0] and (not dis((obs[2], obs[3]), (obs[0], obs[1])) <= 1 and obs[14]) or (dis((obs[2], obs[3]), (obs[0], obs[1])) <= 1 and not obs[14]):
-        print('0',obs,dis((obs[2], obs[3]), (obs[0], obs[1])))
+        #print('0',obs,dis((obs[2], obs[3]), (obs[0], obs[1])))
         pas[0] = False
     if pas[1] and (not dis((obs[4], obs[5]), (obs[0], obs[1])) <= 1 and obs[14]) or (dis((obs[4], obs[5]), (obs[0], obs[1])) <= 1 and not obs[14]):
-        print('1',obs,dis((obs[4], obs[5]), (obs[0], obs[1])))
+        #print('1',obs,dis((obs[4], obs[5]), (obs[0], obs[1])))
         pas[1] = False
     if pas[2] and (not dis((obs[6], obs[7]), (obs[0], obs[1])) <= 1 and obs[14]) or (dis((obs[6], obs[7]), (obs[0], obs[1])) <= 1 and not obs[14]):
-        print('2',obs,dis((obs[6], obs[7]), (obs[0], obs[1])))
+        #print('2',obs,dis((obs[6], obs[7]), (obs[0], obs[1])))
         pas[2] = False
     if pas[3] and (not dis((obs[8], obs[9]), (obs[0], obs[1])) <= 1 and obs[14]) or (dis((obs[8], obs[9]), (obs[0], obs[1])) <= 1 and not obs[14]):
-        print('3',obs,dis((obs[8], obs[9]), (obs[0], obs[1])))
+        #print('3',obs,dis((obs[8], obs[9]), (obs[0], obs[1])))
         pas[3] = False
     if (not dis((obs[2], obs[3]), (obs[0], obs[1])) <= 1 and obs[15]) or (dis((obs[2], obs[3]), (obs[0], obs[1])) <= 1 and not obs[15]):
         des[0] = False
@@ -85,7 +85,7 @@ def get_action(obs):
     is_des = state[8]
     action = None
     if state not in q_table:
-        print(obs)
+        #print(obs)
         action = random.choice([0, 1, 2, 3])
     else:
         if np.argmax(q_table[state]) == 4 and obs[14]:
@@ -94,5 +94,5 @@ def get_action(obs):
             is_pickup = False
             pas_loc = (obs[0], obs[1])
         action = np.argmax(q_table[state])
-    print('**',action,obs)
+    #print('**',action,obs)
     return action
